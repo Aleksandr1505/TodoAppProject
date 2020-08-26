@@ -19,27 +19,37 @@ const TodoScreenComponent = ({
     disabled,
 }) => {
     return (
-        <View key={idItem}>
+        <View key={idItem} style={styles.container}>
             {edit ? (
                 <View>
-                    <TextInput value={editTitle} onChangeText={onChangeTitle} autoFocus />
-                    <TextInput value={editText} onChangeText={onChangeText} />
-                    <Button title="Save" onPress={() => editNote()} disabled={disabled} />
-                    <Text style={styles.textError}>{error}</Text>
+                    <TextInput style={styles.editValueTitle} value={editTitle} onChangeText={onChangeTitle} autoFocus />
+                    <TextInput style={styles.editValueText} value={editText} onChangeText={onChangeText} />
+                    <View style={styles.containerButton}>
+                        <Button style={styles.button} title="Save" onPress={() => editNote()} disabled={disabled} />
+                    </View>
+                    <View style={styles.containerView}>
+                        <Text style={styles.textError}>{error}</Text>
+                    </View>
                 </View>
             ) : (
                 <View>
                     {deleted ? (
-                        <View>
-                            <Text>Note was deleted</Text>
+                        <View style={styles.containerView}>
+                            <Text style={styles.deletedNote}>Note was successfully deleted</Text>
                         </View>
                     ) : (
                         <View>
-                            <Text style={isCompleted && styles.textComplete}>{editTitle}</Text>
-                            <Text>{editText}</Text>
-                            <Button onPress={() => setEdit(!edit)} title="Edit" />
-                            <Button title="Delete" onPress={() => deleteNote()} />
-                            <TouchableOpacity style={styles.button} onPress={changeStatusIsCompleted}>
+                            <Text style={[styles.todoInformation, isCompleted && styles.textComplete]}>
+                                Title: {editTitle}
+                            </Text>
+                            <Text style={styles.todoInformation}>Text: {editText}</Text>
+                            <View style={styles.containerButton}>
+                                <Button onPress={() => setEdit(!edit)} title="Edit" />
+                            </View>
+                            <View style={styles.containerButton}>
+                                <Button title="Delete" onPress={() => deleteNote()} />
+                            </View>
+                            <TouchableOpacity style={styles.buttonMarkAsCompleted} onPress={changeStatusIsCompleted}>
                                 <Text style={styles.buttonText}>
                                     {isCompleted ? 'Return Uncompleted Status' : 'Mark as Completed'}
                                 </Text>

@@ -21,7 +21,7 @@ const TodoScreenContainer = ({ route }) => {
         setEditTitle(changedNoteTitle);
         const existTitle = todos.some((item) => item.title === changedNoteTitle);
         if (existTitle) {
-            setError('Note with such name is already exist');
+            setError('Note with such name is already exist.');
             setDisabled(true);
         } else {
             setError('');

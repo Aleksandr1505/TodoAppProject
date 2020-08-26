@@ -9,7 +9,7 @@ const HomeTodoScreenComponent = ({ todos, navigation, valueInput, onChangeText, 
         <View style={styles.container}>
             <SearchBar valueInput={valueInput} onChangeText={onChangeText} />
             {todos.length === 0 ? (
-                <View>
+                <View style={styles.textContainer}>
                     <Text>There is no any notes.</Text>
                 </View>
             ) : (

@@ -4,7 +4,10 @@ export const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
-
+    textContainer: {
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
     button: {
         position: 'absolute',
         zIndex: 11,
