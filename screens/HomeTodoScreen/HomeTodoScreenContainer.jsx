@@ -7,19 +7,19 @@ const HomeTodoScreenContainer = () => {
     const { todos } = useSelector((state) => state.TodoReducer);
     const navigation = useNavigation();
     const [search, setSearch] = useState('');
-    const [searchInputEmpty, setSearchInputEmpty] = useState(false);
+    const [searchStartFlag, setSearchStartFlag] = useState(false);
 
     const searchNote = (text) => {
         setSearch(text);
         if (text.length > 2) {
-            setSearchInputEmpty(true);
+            setSearchStartFlag(true);
         } else {
-            setSearchInputEmpty(false);
+            setSearchStartFlag(false);
         }
     };
 
     const filteredTodos = todos.filter((todo) => {
-        return todo.title.toLowerCase().indexOf(search.toLowerCase()) !== -1;
+        return todo.title.toLowerCase().includes(search.toLowerCase());
     });
 
     return (
@@ -29,7 +29,7 @@ const HomeTodoScreenContainer = () => {
             valueInput={search}
             onChangeText={searchNote}
             filteredTodos={filteredTodos}
-            searchInputEmpty={searchInputEmpty}
+            searchStartFlag={searchStartFlag}
         />
     );
 };

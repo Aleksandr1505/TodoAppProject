@@ -42,7 +42,7 @@ const TodoScreenContainer = ({ route }) => {
     const changeStatusIsCompleted = () => {
         dispatch(todoActions.completeTodo(id, todo.isCompleted));
         navigation.setParams({
-            isCompleted: isCompleted === todo.isCompleted ? todo.isCompleted : todo.isCompleted,
+            isCompleted: !todo.isCompleted,
         });
     };
 

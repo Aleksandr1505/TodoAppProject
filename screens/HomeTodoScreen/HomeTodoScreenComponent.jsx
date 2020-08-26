@@ -4,22 +4,17 @@ import { TodoList } from '../../components/TodoList';
 import { SearchBar } from '../../components/SearchBar';
 import { styles } from './styles';
 
-const HomeTodoScreenComponent = ({ todos, navigation, valueInput, onChangeText, filteredTodos, searchInputEmpty }) => {
+const HomeTodoScreenComponent = ({ todos, navigation, valueInput, onChangeText, filteredTodos, searchStartFlag }) => {
     return (
         <View style={styles.container}>
-            <SearchBar
-                valueInput={valueInput}
-                onChangeText={onChangeText}
-                todos={todos}
-                filteredTodos={filteredTodos}
-            />
+            <SearchBar valueInput={valueInput} onChangeText={onChangeText} />
             {todos.length === 0 ? (
                 <View>
                     <Text>There is no any notes.</Text>
                 </View>
             ) : (
                 <View>
-                    {searchInputEmpty ? (
+                    {searchStartFlag ? (
                         <View>
                             {filteredTodos.length === 0 ? (
                                 <View>

@@ -12,7 +12,7 @@ export default {
         dispatch({ type: actionTypes.REMOVE_TODO, payload: { id } });
     },
 
-    completeTodo: (id, isCompleted) => (dispatch) => {
-        dispatch({ type: actionTypes.COMPLETE_TODO, payload: { id, isCompleted } });
+    completeTodo: (id) => (dispatch) => {
+        dispatch({ type: actionTypes.COMPLETE_TODO, payload: { id } });
     },
 };
